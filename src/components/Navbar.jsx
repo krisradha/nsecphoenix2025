@@ -69,14 +69,14 @@ function Navbar() {
 
           {/* Community Link */}
           <li>
-            <a
-              href="https://chat.whatsapp.com/LolTbdEVT6MKGJhDPFWXMe?mode=ems_copy_t"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors font-bold text-center"
-            >
-              Community
-            </a>
+<a
+  href="https://chat.whatsapp.com/LolTbdEVT6MKGJhDPFWXMe?mode=ems_copy_t"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="community-btn fixed bottom-5 right-5 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-600 transition"
+>
+  Join Community
+</a>
           </li>
         </ul>
       </div>
