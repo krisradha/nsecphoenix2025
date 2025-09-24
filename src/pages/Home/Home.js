@@ -310,7 +310,7 @@ function Home() {
               <HStack spacing={4} flexWrap="wrap" justify={{ base: "center", md: "flex-start" }}>
                 <Button
                   as="a"
-                  href="#readmore"
+                  href="/registration"
                   size={{ base: "md", md: "lg" }}
                   colorScheme="blue"
                   variant="solid"
