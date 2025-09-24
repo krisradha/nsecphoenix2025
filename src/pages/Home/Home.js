@@ -138,7 +138,7 @@ function Home() {
               <HStack spacing={4} flexWrap="wrap" justify={{ base: "center", md: "flex-start" }}>
                 <Button
                   as="a"
-                  href="/registration"
+                  href="/register"
                   size={{ base: "md", md: "lg" }}
                   colorScheme="blue"
                   borderRadius="full"
@@ -148,11 +148,11 @@ function Home() {
                   shadow="lg"
                   _hover={{ transform: "translateY(-2px)", shadow: "xl" }}
                 >
-                  Read More →
+                  REGISTER NOW →
                 </Button>
                 <Button
                   as="a"
-                  href="https://www.avenirnsec.live/"
+                  href="/events"
                   size={{ base: "md", md: "lg" }}
                   bg="black"
                   color="white"
@@ -163,7 +163,7 @@ function Home() {
                   shadow="lg"
                   _hover={{ bg: "gray.800", transform: "translateY(-2px)", shadow: "xl" }}
                 >
-                  ⭐ AVENIR '24
+                  Events 2025
                 </Button>
               </HStack>
             </VStack>
