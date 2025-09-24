@@ -1,0 +1,26 @@
+html {
+  scroll-behavior: smooth;
+}
+*
+{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+.navbar a
+{
+  text-decoration: none;
+}
+
+.navbar .active
+{
+  background: #1d50c3;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 12px;
+}
+
+:focus {
+  outline: none !important;
+}
