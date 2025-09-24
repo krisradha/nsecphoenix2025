@@ -96,12 +96,15 @@ function Home() {
       description:
         "PHOENIX is the official tech club of Netaji Subhash Engineering College. A club which looks into the overall development of the students of this college. It was founded by a group of like-minded people in January 2006 with the aim of inculcating values of friendship, teamwork and leadership as well as increases the technical skills like coding and robotics of a student. PHOENIX plays a crucial role in bridging the gap between the college and corporate life. A club which provides each individual a stage to shine.",
     },
-    {
-      image: img2,
-      title: "What Phoenix has to offer?",
-      description:
-        "PHOENIX is instrumental in conducting several weekly forums which helps in the overall development of a student. There are domain-specific forums that are free and open to anyone who wants to learn. Various clubs responsible for different activities are functional under PHOENIX. These are:ELOQUENSE: The language club which is responsible for conducting events like debates and open mics.ROBONIX: The robotics club introduces newly made engineers to the world of creating objects from scratch-an RC car, a drone or maybe the next iron man suit.CYBERNIX: Keeping up with the need of the hours, a club solely bases for IT-based aced activities and coding. NIRMAAN: Mainly for the students of the Civil and Mechanical department, As the the name suggests a club which deals with building things.",
-    },
+<div className="card">
+  <img src={img2} alt="Phoenix" className="card-img" />
+  <div className="card-content">
+    <h3 className="card-title">What Phoenix has to offer?</h3>
+    <p className="card-description">
+      PHOENIX is instrumental in conducting several weekly forums which helps...
+    </p>
+  </div>
+</div>
     {
       image: img3,
       title: "What else ?",
