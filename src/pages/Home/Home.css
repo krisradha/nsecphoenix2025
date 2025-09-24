@@ -51,6 +51,28 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
+.card {
+  display: flex;
+  flex-direction: column;  /* stack image and text */
+  align-items: center;
+  max-width: 400px;
+  margin: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 16px;
+  text-align: center;
+}
+
 /* Section Padding */
 .section-padding {
     padding: 80px 5%;
