@@ -1,106 +1,124 @@
 import React, { useState } from "react";
+import emailjs from "../utils/email";
+import "./Registration.css";
 
-function Registration() {
+const RegistrationForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    gender: "",
+    whatsapp: "",
+    contact: "",
+    department: "",
+    section: "",
+    graduation: "",
+    studentId: "",
+    profilePic: null,
+    transactionId: "",
+  });
+
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (files) {
+      setFormData({ ...formData, [name]: files[0] });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("✅ Registration submitted! Redirecting to payment...");
-    setTimeout(() => {
-      window.location.href = "/payment"; // Replace with your payment page route
-    }, 2000);
+
+    if (!formData.profilePic) {
+      alert("Please upload your picture");
+      return;
+    }
+
+    // Upload files
+    const uploadData = new FormData();
+    uploadData.append("profilePic", formData.profilePic);
+
+    if (formData.transactionId) {
+      uploadData.append("transactionId", formData.transactionId);
+    }
+
+    try {
+      // Upload files to server
+      await fetch("/Uploads.php", {
+        method: "POST",
+        body: uploadData,
+      });
+
+      // Send email
+      await emailjs.sendForm("service_id", "template_id", e.target, "user_id");
+
+      setMessage("✅ Registration submitted! Check your email for confirmation.");
+      setTimeout(() => {
+        window.location.href = "/payment";
+      }, 2000);
+    } catch (err) {
+      console.error(err);
+      alert("Submission failed! Try again.");
+    }
   };
 
   return (
     <div className="container">
-      <div className="header">
-        <h1>
-          <i className="fas fa-fire"></i> Phoenix Club Registration
-        </h1>
-        <p>Join NSEC’s official Coding, Tech & Innovation Club</p>
-      </div>
+      <h2>Phoenix Club Registration</h2>
+      <p>Join NSEC’s official Coding, Tech & Innovation Club</p>
+      <form onSubmit={handleSubmit}>
+        <label>Name*</label>
+        <input type="text" name="name" placeholder="Enter your full name" onChange={handleChange} required />
 
-      <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          <div className="form-grid">
-            <div className="form-group">
-              <label htmlFor="full_name">Full Name</label>
-              <input type="text" id="full_name" name="full_name" required placeholder="Enter your full name" />
-            </div>
+        <label>College Email Id</label>
+        <input type="email" name="email" placeholder="Your personal email id" onChange={handleChange} required />
 
-            <div className="form-group">
-              <label htmlFor="student_id">Student ID</label>
-              <input type="text" id="student_id" name="student_id" required placeholder="Enter your Student ID" />
-            </div>
+        <label>Gender*</label>
+        <select name="gender" onChange={handleChange} required>
+          <option value="">Choose Your Gender</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+          <option value="O">Other</option>
+        </select>
 
-            <div className="form-group">
-              <label htmlFor="department">Department</label>
-              <input type="text" id="department" name="department" required placeholder="CSE, IT, ME, etc." />
-            </div>
+        <label>WhatsApp No.*</label>
+        <input type="text" name="whatsapp" placeholder="Your Whatsapp Number" onChange={handleChange} required />
 
-            <div className="form-group">
-              <label htmlFor="year">Year</label>
-              <select id="year" name="year" required>
-                <option value="">-- Select Year --</option>
-                <option value="1st">1st Year</option>
-                <option value="2nd">2nd Year</option>
-                <option value="3rd">3rd Year</option>
-                <option value="4th">4th Year</option>
-              </select>
-            </div>
+        <label>Contact No.</label>
+        <input type="text" name="contact" placeholder="Your Contact Number" onChange={handleChange} />
 
-            <div className="form-group full-width">
-              <label htmlFor="course">Course</label>
-              <input type="text" id="course" name="course" required placeholder="Diploma, B.Tech, etc." />
-            </div>
+        <label>Department*</label>
+        <input type="text" name="department" placeholder="Choose Your Department" onChange={handleChange} required />
 
-            <div className="form-group full-width">
-              <label htmlFor="why_join">Why do you want to join?</label>
-              <textarea id="why_join" name="why_join" required placeholder="Write your reason..."></textarea>
-            </div>
+        <label>Section*</label>
+        <input type="text" name="section" placeholder="Your section" onChange={handleChange} required />
 
-            <div className="form-group full-width">
-              <label htmlFor="address">Address</label>
-              <textarea id="address" name="address" required placeholder="Your address"></textarea>
-            </div>
+        <label>Graduation Year</label>
+        <input type="text" name="graduation" placeholder="Your graduation year" onChange={handleChange} />
 
-            <div className="form-group">
-              <label htmlFor="aadhaar">Aadhaar Number</label>
-              <input type="text" id="aadhaar" name="aadhaar" required placeholder="XXXX-XXXX-XXXX" />
-            </div>
+        <label>Student Id*</label>
+        <input type="text" name="studentId" placeholder="Your Student Id" onChange={handleChange} required />
 
-            <div className="form-group full-width">
-              <label htmlFor="student_id_card">Upload Student ID</label>
-              <input type="file" id="student_id_card" name="student_id_card" accept=".jpg,.jpeg,.png,.pdf" required />
-              <div className="file-upload-text">Upload a clear photo/scan of your Student ID</div>
-            </div>
+        <label>Your Picture* (Upload only images[.jpg, .png, .jpeg])</label>
+        <input type="file" name="profilePic" accept=".jpg,.jpeg,.png" onChange={handleChange} required />
 
-            <div className="form-group full-width">
-              <label htmlFor="aadhaar_card">Upload Aadhaar Card</label>
-              <input type="file" id="aadhaar_card" name="aadhaar_card" accept=".jpg,.jpeg,.png,.pdf" required />
-              <div className="file-upload-text">Upload a clear photo/scan of your Aadhaar card</div>
-            </div>
-          </div>
+        <label>Student ID or Payment Recipient*</label>
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/phoenix-c88b9.appspot.com/o/contact%2Fqr%2Fv7l2c_WhatsApp%20Image%202023-09-01%20at%202.57.34%20PM.jpeg?alt=media&token=50a15e43-6e36-4c70-b5a9-340ff19ae55d"
+          alt="QR Payment"
+          width="150"
+        />
 
-          <div className="terms-container">
-            <div className="terms">
-              <input type="checkbox" id="terms" name="terms" required />
-              <label htmlFor="terms">
-                I confirm that the information provided is accurate and I accept the{" "}
-                <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
-              </label>
-            </div>
-          </div>
+        <label>Transaction ID*</label>
+        <input type="text" name="transactionId" placeholder="Enter your Transaction ID" onChange={handleChange} required />
 
-          <button type="submit" className="submit-btn">
-            <i className="fas fa-check-circle"></i> Submit & Proceed to Payment
-          </button>
-        </form>
-
-        {message && <div className="message success">{message}</div>}
-      </div>
+        <button type="submit">Submit & Proceed to Payment</button>
+      </form>
+      {message && <div className="success">{message}</div>}
     </div>
   );
-}
+};
 
-export default Registration;
+export default RegistrationForm;
