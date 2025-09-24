@@ -97,7 +97,7 @@ function Footer() {
 
       </div>
       <p className="text-[.8rem] md:text-[1rem] bg-[#013a77] p-3 text-center">
-        &copy; Copyright Phoenix 2022-23. All Rights Reserved
+        &copy; Copyright Phoenix 2025. All Rights Reserved
       </p>
     </div>
   );
