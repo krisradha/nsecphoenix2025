@@ -249,7 +249,7 @@ function Home() {
                   src={IntroGroupImage}
                   alt="Phoenix Team"
                   w={{ base: "full", md: "600px" }}
-                  h={{ base: "250px", md: "400px" }}
+                  h={{ base: "250px", md: "350px" }}
                   borderRadius="2xl"
                   shadow="2xl"
                   objectFit="cover"
