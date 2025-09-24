@@ -1,9 +1,9 @@
-/* Intro Sections */
 .intro {
     width: 100%;
     position: relative;
     background: url("/public/intro-bg.png") center bottom no-repeat;
     background-size: cover;
+    /* padding: 200px 0 120px 0; */
     height: 85vh;
 }
 
@@ -12,11 +12,10 @@
     position: relative;
     background: url("/public/intro-bg.png") center bottom no-repeat;
     background-size: cover;
-    padding: 120px 5% 80px 5%;
+    padding: 150px 0 120px 0;
     height: 45vh;
 }
 
-/* Glowing Shadow */
 .glowing-shadow {
     position: relative;
 }
@@ -24,7 +23,10 @@
 .glowing-shadow::after {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: -1;
     box-shadow: 0 0 10px #1d50c3, 0 0 20px #1d50c3, 0 0 30px #1d50c3, 0 0 40px #00c3ff, 0 0 70px #00c3ff, 0 0 80px #00c3ff, 0 0 100px #00c3ff, 0 0 150px #00c3ff;
     border-radius: inherit;
@@ -36,8 +38,20 @@
     opacity: 1;
 }
 
-/* Card and Button Hover */
-.card-hover, .button-hover {
+/* Professional UI Enhancements */
+.hero-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.member-gradient {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.card-hover {
     transition: all 0.3s ease;
 }
 
@@ -46,69 +60,21 @@
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
+.button-hover {
+    transition: all 0.3s ease;
+}
+
 .button-hover:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-.card {
-  display: flex;
-  flex-direction: column;  /* stack image and text */
-  align-items: center;
-  max-width: 400px;
-  margin: auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.card-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 16px;
-  text-align: center;
-}
-
-/* Section Padding */
 .section-padding {
-    padding: 80px 5%;
-}
-
-/* Mobile Responsive */
-@media (max-width: 1024px) {
-    .intro {
-        height: 70vh;
-    }
-    .intro-secondary {
-        height: 40vh;
-        padding: 100px 5% 60px 5%;
-    }
+    padding: 80px 0;
 }
 
 @media (max-width: 768px) {
-    .intro {
-        height: 60vh;
-    }
-    .intro-secondary {
-        height: 35vh;
-        padding: 80px 3% 50px 3%;
-    }
     .section-padding {
-        padding: 60px 3%;
-    }
-    .card-hover:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    }
-    .button-hover:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-    h1, h2, h3, h4 {
-        font-size: 90%;
+        padding: 60px 0;
     }
 }
